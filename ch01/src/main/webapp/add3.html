@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	function chk() {
+		if (!frm.num.value) {
+			alert("숫자를 입력하세요");			
+			frm.num.focus();
+			return false;
+		}
+		if (isNaN(frm.num.value)) {
+			alert("숫자로만 입력하세요!!");			
+			frm.num.focus();
+			frm.num.value = ""; //입력된 글자 지우기
+			return false;
+		}
+		return true;
+	}
+</script>
+</head>
+<body>
+	<h1>숫자를 입력하세요</h1>
+	<h4>html을 출력하는데 Servlet을 사용하기(Web Setting을 Annotation(@))</h4>
+	<!-- <form action="Add3" name="frm" onsubmit="return chk()"> -->
+	<form action="Add3" name="frm" method="post" onsubmit="return chk()">
+		<label>숫자 :</label> <input type="text" name="num"><p> <!-- name="num"를 id="num"으로 하면 자바에서 받아들이지 못한다. -->
+		<label>위치 :</label> <input type="text" name="loc"><p>
+		<input type="submit" value="확인">	
+	</form>
+	
+<!-- 	
+	form태그를 사용하게되면 action을 사용해 실행하게된다.
+	form태그 안에 내용들을 파라메타 값으로 가지고 Add3으로 넘어가게 되는데
+	return chk()가 return true로 다 완성이 되면 action의 서블릿파일으로 넘어가게 되고,
+	return false이 되면 완료가 될때까지 return chk()가 실행된다. 
+	
+	form태그에서 method는 작성하지 않으면 기본값으로 get방식으로 실행된다.
+	method의 종류는 두가지고 비교를 하자면
+	method="get"   기본방식이고, size는 브라우저 마다 다르지만 4k가 한계이고, 
+					전달방식은 URL에서 표시가 되고, Data형식은 Text파일로 준다.
+	method="post"  method로 정의로 해주어야하고, size는 무한대이고, 
+					전달방식은 Body에 숨겨서 가고,Data형식은 Text.binary파일로 준다.
+	
+-->
+	
+</body>
+</html>
